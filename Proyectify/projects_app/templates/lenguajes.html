@@ -1,0 +1,23 @@
+{% extends "loged.html" %}
+
+        {% block loged_content %}
+        <div class="container">
+            <h1>Listado de lenguajes disponibles</h1>
+            <div class="row">
+                {% for language in languages %}
+                    <div class="col-md-3">
+                        <div class="card mb-4 transparent-card-body bg-black">
+                            <img src="{{ language.lang_image.url }}" alt="{{ language.lang_name }}">
+                            <div class="card-body transparent-card-body">
+                                <h5 class="card-title text-white">{{ language.lang_name }}</h5>
+                                <!-- Agrega aquí las características del lenguaje si es necesario -->
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} {% cycle "", "", "", "</div><div class='row'>" %}
+                    <!-- La función cycle se utiliza para dividir las columnas en grupos de 4 --> {% endcomment %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endblock loged_content %}
+

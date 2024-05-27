@@ -1,0 +1,67 @@
+{% extends "core_layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock title %}
+
+{% block content %}
+{% load static %}
+
+    <section id="inicio">
+        <img src="{% static "images/portadaCopia.jpg" %}" class="img-fluid" alt="Projectify">
+    </section>
+<div class="container-ls">
+
+    {% comment "Seccion de descripcion" %}{% endcomment %}
+    <section class="text-center text-white font-weight-bold bg-dark">
+        <p class="pt-5 display-2">¿Qué es Projectify?</p>
+        <p class="m-3 p-5 lead">
+                Projectify es una plataforma intuitiva y poderosa diseñada para simplificar la gestión de proyectos.</br> 
+                Con características avanzadas de asignación de tareas, seguimiento de tiempo y colaboración en equipo. </br> 
+                Projectify te ayuda a llevar tus proyectos al siguiente nivel.
+        </p>
+    </section>
+
+    {% comment "Seccion de Procesos" %}{% endcomment %}
+
+    <div class="container text-center pt-4 ">
+        <div class="row align-items-center text-white">
+            <div class="col-4 border border-4 bg-secondary p-5">
+
+                <p class="h1">PLANIFICACIÓN EFICIENTE</p>
+                <p class="lead">
+                    Comienza por planificar tus proyectos de manera eficiente, estableciendo objetivos claros y asignando tareas a tu equipo
+                </p>
+            </div> 
+            <div class="col-4 border border-4 bg-dark p-5">
+                <p class="h1">SEGUIMIENTO EN TIEMPO REAL</p>
+                <p class="lead">
+                    Mantén un seguimiento en tiempo real del progreso de tus proyectos, identificando posibles obstáculos y ajustando el curso según sea necesario.
+                </p>
+            </div>
+            <div class="col-4 border border-4 bg-secondary p-5">
+                <p class="h1">COLABORACIÓN EN FRICCIONES</p>
+                <p class="lead">
+                    Fomenta la colaboración entre tu equipo, facilitando la comunicación y compartiendo recursos de manera eficiente.
+                </p>
+            </div>
+        </div>
+      </div>
+
+    <section class="contact">
+        <div class="contact-info">
+            <h2>¿Listo para Transformar tu Gestión de Proyectos?</h2>
+            <p>¡No esperes mas y lleva tus proyectos al siguiente nivel! Contáctanos hoy mismo para obtener más información sobre cómo Porjectify puede beneficiar a tu equipo y a tus proyectos</p>
+        </div>
+        <div class="contact-image">
+        </div>
+    </section>
+</div>
+
+
+
+{% endblock content %}
+
+
+
+

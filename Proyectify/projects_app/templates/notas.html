@@ -1,0 +1,23 @@
+{% extends "loged.html" %}
+
+{% block loged_content %}
+<div class="container pb-5">
+    <P class="display-1 text-warning text-center pb-5">Notas<P>
+    <div class="row">
+    {% for note in notes %}
+    <div class="col-6">
+        <div class="card bg-dark border mb-4">
+            <div class="card-body">
+                <button type="button" class="btn btn-primary text-white my-3"><strong>Id Projecto: {{note.project.id}}</strong></button>
+                <P class="card-title display-4 text-white">{{ note.project.project_name }}</p>
+                <p class="display-6 text-warning"><strong></strong> {{ note.note_name}}</p>
+                <p class="card-text lead text-white">{{ note.note_description }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock loged_content %}
+
+

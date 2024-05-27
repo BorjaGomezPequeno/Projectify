@@ -1,0 +1,43 @@
+{% extends "loged.html" %}
+
+{% block loged_content %}
+<div class="container pb-5">
+    <P class="display-1 text-warning text-center pb-5">Tareas<P>
+    <div class="row">
+        {% for task in tasks %}
+            <div class="col-6">
+                <div class="card bg-dark border-warning mb-4">
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary text-white my-3"><strong>Project Id:{{task.project.id}}</strong></button>
+                        <button type="button" class="btn btn-warning  text-black"><strong>Task Id:{{task.id}}</strong></button>
+                        <P class="card-title display-4 text-white">{{ task.project.project_name }}</p>
+                        <p class="display-6 text-warning"><strong>Tarea:</strong> {{ task.task_name}}</p>
+                        <p class="card-text lead text-white">Descripción:{{ task.task_description }}</p>
+                        <p class="text-primary text-end">Estado:
+                            {% if task.completed == True %}
+                                <button type="button" class="btn btn-success text-white"><strong>Completado</strong></button>
+                            {% else %}
+                                <button type="button" class="btn btn-danger text-white"><strong>Pendiente</strong></button>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div> 
+    {% load static %}
+    {% if request.user.is_superuser %}
+        <div class="m-5">
+            <a class="navbar-brand" href="{% url "add-task" %}">
+                <p class="lead">Agregar Tarea 
+                    <img src="{% static "images/icons/AddTask.png" %}" alt="Projectify Logo" style="fill: white;">
+                </p>
+            </a>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock loged_content %}
+
+
+

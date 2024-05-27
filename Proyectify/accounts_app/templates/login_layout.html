@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- Agregar enlaces a los archivos CSS de Bootstrap -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "css/styles.css" %}">
+  <style>
+    .background-image {
+        background-image: url('{% static "images/portadaCopia.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    .formColor {
+        background: rgb(0,29,41);
+        background: linear-gradient(90deg, rgba(0,29,41,0.5) 0%, rgba(9,9,121,1) 0%, rgba(15,126,148,1) 100%);
+    }
+    
+
+  </style>  
+  
+</head>
+
+<body>
+    <div class="background-image">
+        <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+            <div class="rounded p-4 formColor">
+                <a id="logo" class="navbar-brand" href="#">
+                    <img src={% static "images/ProjectifyLogo.png" %} alt="Projectify Logo">
+                  </a>
+                <!-- Aquí va tu formulario -->
+                <form method="post" action="">
+                    <div class="mb-3">
+                        {% csrf_token %}
+                        <label for="username" class="form-label text-white">Nombre de usuario</label>
+                        <input type="text" class="form-control" name="username" id="username">
+                        <div id="emailHelp" class="form-text text-white">*Introduce tu nombre de usuario.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label text-white">Password</label>
+                        <input type="password" class="form-control text-dark" name="password" id="password">
+                        <div id="emailHelp" class="form-text text-white">*Introduce tu contraseña.</div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label text-white" for="exampleCheck1">Haz click</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" value="Login">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

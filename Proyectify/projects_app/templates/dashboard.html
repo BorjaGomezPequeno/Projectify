@@ -1,0 +1,36 @@
+{% extends "loged.html" %}
+
+{% block loged_content %}
+{% load static %}
+
+<div class="container pb-5">
+    <P class="display-3 text-warning pb-5">Bienvenido, {{user.first_name}} {{user.last_name}}<P>
+</div>
+<div class="container text-center">
+    <div class="row">
+      <div class="col-6 p-3">
+        <a class="navbar-brand" href="{% url "proyectos" %}">
+        <img src="{% static "images/Project2.png" %}" alt="Projects" style="fill: white;" >
+        </a>
+        <p class="display-3 text-warning">Proyectos</p>
+      </div>
+      <div class="col-6 p-3">
+        <a class="navbar-brand" href="{% url "tareas" %}">
+        <img src="{% static "images/Task2.png" %}" alt="Projects" style="fill: white;" >
+        </a>
+        <p class="display-3 text-warning">Tareas</p>
+      </div>
+      <div class="col-6 p-3">
+        <a class="navbar-brand" href="{% url "notas" %}">
+        <img src="{% static "images/User2.png" %}" alt="Projects" style="fill: white;" >
+        </a>
+        <p class="display-3 text-warning">Notas</p>
+      </div>
+      <div class="col-6 p-3">
+        <a class="navbar-brand" href="{% url "tareas" %}">
+        <img src="{% static "images/Notes2.png" %}" alt="Projects" style="fill: white;" >
+        </a>
+        <p class="display-3 text-warning">Usuario</p>
+      </div>
+
+{% endblock loged_content %}

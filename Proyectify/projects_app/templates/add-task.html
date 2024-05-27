@@ -1,0 +1,43 @@
+{% extends "loged.html" %}
+
+{% block loged_content %}
+    <p class="display-3 text-center text-warning">Agregar Tarea</p>
+
+    <form method="POST" style="max-width: 800px; margin: auto;">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="{{ taskForm.project.id_for_label }}" class="form-label display-6 pb-3">Proyecto:</label>
+            <div style="width: 20px; float: left;"></div>
+            {{ taskForm.project }}
+        </div>
+        </br>
+        <div class="mb-3">
+            <label for="{{ taskForm.task_name.id_for_label }}" class="form-label display-6 pb-3">Nombre de la tarea:</label>
+            {{ taskForm.task_name }}
+        </div>
+        </br>
+        <div class="mb-3">
+            <label for="{{ taskForm.task_description.id_for_label }}" class="form-label display-6 pb-3">Descripción de la tarea:</label>
+            {{ taskForm.task_description }}
+        </div>
+        </br>
+        <div class="mb-3">
+            <label for="{{ taskForm.assigned_to.id_for_label }}" class="form-label display-6 pb-3" >Asignado a:</label>
+            {{ taskForm.assigned_to }}
+        </div>
+        </br>
+        <button type="submit" style="background: rgb(255,135,38); background: linear-gradient(270deg, rgba(255,135,38,1) 0%, rgba(218,79,24,1) 100%, rgba(0,212,255,1) 100%); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Agregar Tarea</button>
+        </br>
+        <div class="mb-5">
+        </div>
+
+    </form>
+
+{% endblock loged_content %}
+
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+{% extends "loged.html" %}
+
+{% block loged_content %}
+
+<div class="container pb-5">
+    <button type="button" class="btn btn-primary text-white my-3"><strong>Id Proyecto: {{project.id}}</strong></button>
+    <P class="card-title display-4 text-white">{{ project.project_name }}</p>
+    <p class="h3 text-warning"><strong>Cliente:</strong> {{ project.client_name}}</p>
+    <p class="card-text lead text-white">Descripción:{{ project.description }}</p>
+    <p class="h5 text-white mb-3">
+        {% for category in project.categories.all %}
+        <strong>Categorias:</strong> {{category.title}}
+        {% endfor %}
+    </p>
+    <P class="text-info"> Creado el: {{ project.created_at}}</p>
+    <P class="text-info"> Actualizado el: {{ project.updated_at}}</p>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex flex-row">
+                    <p class="text-danger"><strong>Asignado a:</strong>
+                        {% if project.assigned_to %}
+                            {{ project.assigned_to.first_name }} {{ project.assigned_to.last_name }}
+
+                        {% else %}
+                            Proyecto sin asignar
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>  
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex flex-row">
+
+                    <p class="text-warning"><strong>Lenguajes:</strong> 
+                        {% for language in project.languages.all %}
+                            {{ language.lang_name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex flex-row mt-2">
+                    {% for language in project.languages.all %}
+                    <div class="col-md-2">
+                        <img src="{{ language.lang_image.url }}" alt="{{ language.lang_name }}" class="img-fluid">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>    
+
+        <P class="display-5 text-warning pb-5">Tareas<P>
+        <div class="row">
+            {% for task in project.tasks.all %}
+                <div class="col-6">
+                    <div class="card bg-dark border-warning mb-4">
+                        <div class="card-body">
+                            <button type="button" class="btn btn-warning  text-black"><strong>Task Id:{{task.id}}</strong></button>
+                            <p class="display-6 text-warning"><strong>Tarea:</strong> {{ task.task_name}}</p>
+                            <p class="card-text lead text-white">Descripción:{{ task.task_description }}</p>
+                            <p class="text-primary text-end">Estado:
+                                {% if task.completed == True %}
+                                    <button type="button" class="btn btn-success text-white"><strong>Completado</strong></button>
+                                {% else %}
+                                    <button type="button" class="btn btn-danger text-white"><strong>Pendiente</strong></button>
+                                {% endif %} 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div> 
+
+</div>
+
+{% endblock loged_content %}
+
+
+

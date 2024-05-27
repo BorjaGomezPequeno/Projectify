@@ -1,0 +1,83 @@
+{% extends "loged.html" %}
+
+
+{% block loged_content %}
+<div class="container pb-5">
+    <P class="display-1 text-warning text-center pb-5">Proyectos<P>
+    <div class="row">
+        {% for project in projects %}
+            <div class="col-6">
+                <div class="card bg-dark border mb-4">
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary text-white my-3"><strong>Id Proyecto: {{project.id}}</strong></button>
+                        <P class="card-title display-4 text-white">{{ project.project_name }}</p>
+                        <p class="h3 text-warning"><strong>Cliente:</strong> {{ project.client_name}}</p>
+                        <p class="card-text lead text-white">Descripción:{{ project.description }}</p>
+                        <p class="h5 text-white mb-3">
+                            {% for category in project.categories.all %}
+                            <strong>Categorias:</strong> {{category.title}}
+                            {% endfor %}
+                        </p>
+                        <P class="text-info"> Creado el: {{ project.created_at}}</p>
+                        <P class="text-info"> Actualizado el: {{ project.updated_at}}</p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="d-flex flex-row justify-content-end px-5">
+
+                                    <p class="text-warning"><strong>Lenguajes:</strong> 
+                                        {% for language in project.languages.all %}
+                                            {{ language.lang_name }}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="d-flex flex-row justify-content-end">
+                                    {% for language in project.languages.all %}
+                                    <div class="col-md-2">
+                                        <img src="{{ language.lang_image.url }}" alt="{{ language.lang_name }}" class="img-fluid">
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>    
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="d-flex flex-row justify-content-end mt-5 mx-5">
+                                    <p class="text-info"><strong>Asignado a:</strong>
+                                        {% if project.assigned_to %}
+                                            {{ project.assigned_to.first_name }} {{ project.assigned_to.last_name }}
+
+                                        {% else %}
+                                            Proyecto sin asignar
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div> 
+    {% load static %}
+    {% if request.user.is_superuser %}
+        <div class="m-5">
+            <a class="navbar-brand" href="{% url "add-project" %}">
+                <p class="lead">Agregar proyecto 
+                    <img src="{% static "images/icons/AddProject.png" %}" alt="Projectify Logo" style="fill: white;">
+                </p>
+            </a>
+        </div>
+    {% endif %}
+
+</div>
+
+
+{% endblock loged_content %}
+
+
+

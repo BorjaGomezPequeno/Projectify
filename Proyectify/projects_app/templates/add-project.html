@@ -1,0 +1,62 @@
+{% extends "loged.html" %}
+
+
+{% block loged_content %}
+
+<p class="display-3 text-center text-warning">Agregar Proyecto</p>
+
+<form method="POST" style="max-width: 800px; margin: auto;">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="{{ form.project_name.id_for_label }}" class="form-label display-6 pb-3">Nombre del proyecto:</label>
+        <div style="width: 20px; float: left;"></div>
+        {{ form.project_name }}
+    </div>
+    </br>
+    <div class="mb-3">
+        <label for="{{ form.client_name.id_for_label }}" class="form-label display-6 pb-3">Nombre del cliente:</label>
+        {{ form.client_name }}
+    </div>
+    </br>
+    <div class="mb-3">
+        <label for="{{ form.description.id_for_label }}" class="form-label display-6 pb-3">Descripción del proyecto:</label>
+        {{ form.description }}
+    </div>
+    <div class="mb-3">
+        <label class="form-label display-6 pb-3">Categorias:</label>
+        {% for category in categories %}
+        <div class="form-check mb-3">
+            <input type="checkbox" name="categories" value="{{ category.id }}">
+            <label class="form-check-label" for="category_{{ category.id }}">{{ category.title }}</label>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        <label class="form-label display-6 pb-3">Lenguajes:</label>
+        {% for language in languages %}
+        <div class="form-check mb-3">
+            <input type="checkbox" name="languages" value="{{ language.id }}">
+            <label class="form-check-label" for="language_{{ language.id }}">{{ language.lang_name }}</label>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
+    <br>
+    <div class="mb-3">
+        <label for="{{ form.assigned_to.id_for_label }}" class="form-label display-6 pb-3" >Asignado a:</label>
+        {{ form.assigned_to }}
+    </div>
+    </br>
+    <button type="submit" style="background: rgb(255,135,38); background: linear-gradient(270deg, rgba(255,135,38,1) 0%, rgba(218,79,24,1) 100%, rgba(0,212,255,1) 100%); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Agregar Tarea</button>
+    </br>
+    <div class="mb-5">
+    </div>
+
+</form>
+
+
+{% endblock loged_content %}
+
+
+

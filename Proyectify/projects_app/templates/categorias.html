@@ -1,0 +1,16 @@
+{% extends "loged.html" %}
+
+{% block loged_content %}
+
+    <h1>Listado de categorias disponibles</h1>
+    <ul>
+        {% load static %}
+        {% for category in categories %}
+            <li>{{ category.title }} : {{ category.description }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock loged_content %}
+
+
+
